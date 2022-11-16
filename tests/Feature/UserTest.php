@@ -31,4 +31,11 @@ class UserTest extends TestCase
     $response = $this->actingAs($user)->get('/dashboard');
     $response->assertStatus(200);
   }
+
+  public function test_unauth_user_cannot_access_dashboard()
+  {
+    $response = $this->get('/dashboard');
+    $response->assertStatus(302);
+    $response->assertRedirect('/login');
+  }
 }
