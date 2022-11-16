@@ -15,5 +15,13 @@ class UserTest extends TestCase
       'email' => 'test@gmail.com',
       'password' => bcrypt('password')
     ]);
+
+    $response = $this->post('/login', [
+      'email' => 'test@gmail.com',
+      'password' => 'password'
+    ]);
+
+    $response->assertStatus(302);
+    $response->assertRedirect('/dashboard');
   }
 }
