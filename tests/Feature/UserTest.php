@@ -12,12 +12,12 @@ class UserTest extends TestCase
   public function test_login_redirect_to_dashboard_successfully()
   {
     User::factory()->create([
-      'email' => 'test@gmail.com',
+      'email' => 'dassa@gmail.com',
       'password' => bcrypt('password')
     ]);
 
     $response = $this->post('/login', [
-      'email' => 'test@gmail.com',
+      'email' => 'dassa@gmail.com',
       'password' => 'password'
     ]);
 
@@ -37,5 +37,16 @@ class UserTest extends TestCase
     $response = $this->get('/dashboard');
     $response->assertStatus(302);
     $response->assertRedirect('/login');
+  }
+
+  public function test_user_has_name_attribute()
+  {
+    $user = User::factory()->create([
+      'name' => 'malini',
+      'email' => 'malini@test.com',
+      'password' => bcrypt('password')
+    ]);
+
+    $this->assertEquals('malini', $user->name);
   }
 }
