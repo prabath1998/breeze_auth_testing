@@ -9,21 +9,21 @@ use Tests\TestCase;
 
 class UserTest extends TestCase
 {
-  public function test_login_redirect_to_dashboard_successfully()
-  {
-    User::factory()->create([
-      'email' => 'dassa@gmail.com',
-      'password' => bcrypt('password')
-    ]);
+  // public function test_login_redirect_to_dashboard_successfully()
+  // {
+  //   User::factory()->create([
+  //     'email' => 'dassa@gmail.com',
+  //     'password' => bcrypt('password')
+  //   ]);
 
-    $response = $this->post('/login', [
-      'email' => 'dassa@gmail.com',
-      'password' => 'password'
-    ]);
+  //   $response = $this->post('/login', [
+  //     'email' => 'dassa@gmail.com',
+  //     'password' => 'password'
+  //   ]);
 
-    $response->assertStatus(302);
-    $response->assertRedirect('/dashboard');
-  }
+  //   $response->assertStatus(302);
+  //   $response->assertRedirect('/dashboard');
+  // }
 
   public function test_auth_user_can_access_dashboard()
   {
@@ -39,14 +39,14 @@ class UserTest extends TestCase
     $response->assertRedirect('/login');
   }
 
-  public function test_user_has_name_attribute()
-  {
-    $user = User::factory()->create([
-      'name' => 'malini',
-      'email' => 'malini@test.com',
-      'password' => bcrypt('password')
-    ]);
+  // public function test_user_has_name_attribute()
+  // {
+  //   $user = User::factory()->create([
+  //     'name' => 'malini',
+  //     'email' => 'malini@test.com',
+  //     'password' => bcrypt('password')
+  //   ]);
 
-    $this->assertEquals('malini', $user->name);
-  }
+  //   $this->assertEquals('malini', $user->name);
+  // }
 }
