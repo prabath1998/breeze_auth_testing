@@ -45,7 +45,6 @@ class ProductTest extends TestCase
     {
         $user = User::factory()->create();
         $response = $this->actingAs($user)->get('/products');
-
         $response->assertSee('Buy Product');
     }
 
@@ -53,5 +52,12 @@ class ProductTest extends TestCase
     {
         $response =  $this->get('/products');
         $response->assertDontSee('Buy Product');
+    }
+
+    public function test_auth_user_can_see_create_link()
+    {
+        $user = User::factory()->create();
+        $response = $this->actingAs($user)->get('/products');
+        $response->assertSee('Create');
     }
 }

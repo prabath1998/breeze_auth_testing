@@ -1,6 +1,8 @@
 <x-guest-layout>
     <h1>products</h1>
-
+    @auth
+        <a href="">Create</a>
+    @endauth
     @forelse ($products as $product)
         <h2 class="font-bold">{{ $product->name }} - {{ $product->type }}</h2>
         @auth
