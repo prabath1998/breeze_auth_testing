@@ -48,4 +48,10 @@ class ProductTest extends TestCase
 
         $response->assertSee('Buy Product');
     }
+
+    public function test_unauth_user_cannot_see_buy_button()
+    {
+        $response =  $this->get('/products');
+        $response->assertDontSee('Buy Product');
+    }
 }
