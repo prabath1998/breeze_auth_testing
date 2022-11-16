@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -21,5 +22,9 @@ class ProductCrudTest extends TestCase
         ]);
 
         $response->assertRedirect('/products');
+        // $this->assertDatabaseHas('products', [
+        //     'name' => 'Shad Lang'
+        // ]);
+        // $this->assertCount(1, Product::all());
     }
 }

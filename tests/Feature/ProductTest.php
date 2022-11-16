@@ -41,12 +41,12 @@ class ProductTest extends TestCase
         $response->assertSee($this->product->name);
     }
 
-    public function test_auth_user_can_see_the_buy_button()
-    {
-        $user = User::factory()->create();
-        $response = $this->actingAs($user)->get('/products');
-        $response->assertSee('Buy Product');
-    }
+    // public function test_auth_user_can_see_the_buy_button()
+    // {
+    //     $user = User::factory()->create();
+    //     $response = $this->actingAs($user)->get('/products');
+    //     $response->assertSee('Buy Product');
+    // }
 
     public function test_unauth_user_cannot_see_buy_button()
     {
