@@ -2,7 +2,7 @@
     <h1>products</h1>
     @auth
         @if (auth()->user()->is_admin)
-            <a href="">Create</a>
+            <a href="{{ url('/products/create') }}">Create</a>
         @endif
     @endauth
     @forelse ($products as $product)
