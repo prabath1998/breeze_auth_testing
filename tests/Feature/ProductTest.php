@@ -60,4 +60,10 @@ class ProductTest extends TestCase
         $response = $this->actingAs($user)->get('/products');
         $response->assertSee('Create');
     }
+
+    public function test_unauth_user_cannot_see_create_link()
+    {
+        $response =  $this->get('/products');
+        $response->assertDontSee('Create');
+    }
 }
